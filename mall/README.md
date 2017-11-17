@@ -1,6 +1,6 @@
-# mall
+# auctionweb
 
-> 用vue2.0构建的简单商城系统
+> vue2.0 重构拍卖信息网页
 
 ## Build Setup
 

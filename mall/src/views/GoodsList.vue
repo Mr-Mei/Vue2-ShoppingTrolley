@@ -103,6 +103,7 @@
     import NavHeader from './../components/Header.vue'
     import NavFooter from './../components/NavFooter.vue'
     import NavBread from './../components/NavBread.vue'
+    import axios from 'axios'
 	export default{
 		components: {
 			NavHeader,
@@ -111,7 +112,18 @@
 		},
 		data() {
 			return {
-
+				goodsList: []
+			}
+		},
+		mounted: function () {
+			this.getgoodsList();
+		},
+		methods: {
+			getgoodsList() {
+				axios.get("/goods").then((result)=>{
+					var res = result.data;
+					this.goodsList = res.result;
+				});
 			}
 		}
 	}
