@@ -20,8 +20,8 @@ npm run build --report
  
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-##项目状态：正在制作
-##描述
+## 项目状态：正在制作
+## 描述
 - 使用vuejs+node+mongodb+es6搭建的简单前后端分离商城系统
  -------------------
 - **作者**   risatoar
