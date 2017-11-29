@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import VueLazyLoad from 'vue-lazyload'
 
+
 Vue.config.productionTip = false
 
 Vue.use(VueLazyLoad,{

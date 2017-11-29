@@ -49,6 +49,13 @@
 		  </div>
 		</div>
 		<div class="md-overlay" v-show="overLayFlag" @click="closePop"></div>
+		<div class="biaodan">
+			输入id  <input type="text" class="productId" v-model="pro.productId">
+			输入产品名  <input type="text" class="productName" v-model="pro.productName">
+			输入价格  <input type="text" class="saleprice" v-model="pro.saleprice">
+			输入图片  <input type="text" class="productImage" v-model="pro.productImage">
+			<button @click="addproduct">add</button>
+		</div>
 		<nav-footer></nav-footer>
 	</div>
 </template>
@@ -70,6 +77,13 @@
 		},
 		data() {
 			return {
+				addurl : "/addgoods",
+				pro: {
+					productId: '',
+					productName: '',
+					saleprice: '',
+					productImage: ''
+				},
 				goodsList: [],
 				priceFilter: [
 				{
@@ -95,8 +109,21 @@
 		methods: {
 			getgoodsList() {
 				axios.get("/goods").then((result)=>{
-					var res = result.data;
+					let res = result.data;
 					this.goodsList = res.result.list;
+				});
+			},
+			addproduct() {
+				console.log(this.pro)      ////返回的是一个包含很多内容东西的对象 里边还有不想要的东西
+				let obj=JSON.stringify(this.pro)   ////JSON.stringify（）JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。 为了清除不想要的东西
+				console.log(obj)
+				axios.post(this.addurl,obj)
+				.then(response=> {
+				console.log(response);
+				console.log('error');
+				})
+				.catch(error=> {
+				console.log(error);
 				});
 			},
 			showFilter() {
