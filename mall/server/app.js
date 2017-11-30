@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-let addgoods = require('./routes/addgoods.js')
 var goods = require('./routes//goods.js');
 
 var app = express();
@@ -28,8 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/goods', goods);
-app.use('/addgoods', addgoods);
+app.use(goods);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -38,6 +36,14 @@ app.use(function(req, res, next) {
 	next(err);
 });
 
+app.all('*',function (req, res, next) {
+	console.log(req,res)
+	res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 // error handler
 app.use(function(err, req, res, next) {
 	// set locals, only providing error in development
